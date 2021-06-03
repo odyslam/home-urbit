@@ -1,0 +1,42 @@
+version: '2.1'
+
+volumes:
+  urbit:
+  netdatacache:
+  netdatalib:
+services:
+  urbit:
+    build: ./urbit
+    privileged: false
+    restart: 'unless-stopped'
+    volumes:
+      - urbit:/urbit
+    ports:
+      - "80:80"
+      - "34343:34343/udp"
+      - "443:443"
+      - "8080:8080"
+    environment:
+      - ENVIRONMENT=PRODUCTION
+  netdata:
+    # image: netdata/netdata
+    build: ./netdata
+    network_mode: 'host'
+    privileged: true
+    ports:
+      - '19999:19999'
+    environment:
+      - PGID=989
+      - DOCKER_HOST=/var/run/balena-engine.sock
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    labels:
+      io.balena.features.balena-socket: 1
+      io.balena.features.procfs: 1
+      io.balena.features.supervisor-api: 1
+      io.balena.features.sysfs: 1
+    volumes:
+      - netdatalib:/var/lib/netdata
+      - netdatacache:/var/cache/netdata
