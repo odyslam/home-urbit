@@ -20,3 +20,6 @@ Effortlessly install and monitor your last personal server, Urbit.
 - [ ]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
 - [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [ ]  Write blog post
+
+## Ideas
+- [ ]  Add local nginx reverse-proxy with username/password combo for security
