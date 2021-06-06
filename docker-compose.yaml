@@ -4,7 +4,26 @@ volumes:
   urbit:
   netdatacache:
   netdatalib:
+  minio:
 services:
+  nginx:
+    build: ./nginx
+    restart: 'unless-stopped'
+    ports:
+     - "80:80"
+     - "443:443"
+  minio:
+    # build: ./minio
+    image: minio/minio
+    restart: 'unless-stopped'
+    environment:
+      - MINIO_ROOT_USER=urbitadmin
+      - MINIO_ROOT_PASSWORD=urbitadmin
+    command: ["minio", "server", "--address", "127.0.0.1:9000"]
+    volumes: 
+      - minio:/data
+    ports: 
+      - "9000:9000"
   urbit:
     build: ./urbit
     privileged: false
