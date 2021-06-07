@@ -15,11 +15,11 @@ Effortlessly install and monitor your last personal server, Urbit.
 
 ## TODO
 
-- [ ]  Add minio service to docker-compose.yml for a local S3 replacement
+- [x]  Add minio service to docker-compose.yml for a local S3 replacement
 - [ ]  Add support for Deploy with balena 1 click deployment
-- [ ]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
+- [x]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
 - [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [ ]  Write blog post
 
 ## Ideas
-- [ ]  Add local nginx reverse-proxy with username/password combo for security
+- [x]  Add local nginx reverse-proxy with username/password combo for security
