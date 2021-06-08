@@ -2,9 +2,18 @@
 
 # Introduction 
 
-Effortlessly install and monitor your last personal server, Urbit.
-
+Urbit is a new OS and peer-to-peer network that’s simple by design, built to last forever, and 100% owned by its users.
+Urbit OS makes the server side usable for individuals without the need for MEGACORP to run their software. Urbit is your own personal server. 
+Urbit is your last computer. Welcome.
 [![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit.git)
+
+## Deploy with balena
+
+[balena](https://www.balena.io/what-is-balena/) is a complete set of tools for building, deploying and managing fleets of connected linux devices. We opted to use balena because it manages the whole lifecycle of our device and application. We only have to download the OS from our account and load it into the SD card for the Raspberry pi. 
+
+balena is completely free for up to 10 devices and most of it's components are Open Source. 
+
+The same setup will work flawlessly if you install another OS into the raspberry pi and use `docker-compose up`.
 
 ## Standing on the shoulders of giants
 
@@ -20,10 +29,19 @@ Effortlessly install and monitor your last personal server, Urbit.
 ## TODO
 
 - [x]  Add minio service to docker-compose.yml for a local S3 replacement
-- [ ]  Add support for Deploy with balena 1 click deployment
+- [x]  Add support for Deploy with balena 1 click deployment
 - [x]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
 - [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [ ]  Write blog post
 
 ## Ideas
 - [x]  Add local nginx reverse-proxy with username/password combo for security
+
+
+## License
+
+[MIT License](./LICENSE)
+
+## Contributing
+
+Yes, please.
