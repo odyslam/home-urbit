@@ -23,4 +23,3 @@ data:
   defaultDeviceType: raspberrypi4-64
   supportedDeviceTypes:
     - generic-aarch64	
-version: "0.1.00"
