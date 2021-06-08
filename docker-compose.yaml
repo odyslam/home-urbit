@@ -34,9 +34,7 @@ services:
       - urbit:/urbit
     ports:
       - "34343:34343/udp"
-      - "8080:8080"
-    environment:
-      - ENVIRONMENT=PRODUCTION
+      - "80:80"
     depends_on: 
         - "nginx"
   netdata:
