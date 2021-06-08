@@ -31,11 +31,10 @@ The same setup will work flawlessly if you install another OS into the raspberry
 - [x]  Add minio service to docker-compose.yml for a local S3 replacement
 - [x]  Add support for Deploy with balena 1 click deployment
 - [x]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
-- [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
-- [ ]  Write blog post
-
-## Ideas
 - [x]  Add local nginx reverse-proxy with username/password combo for security
+- [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
+- [ ]  Add logic to automatically detect PGID and docker/balena socket in Netdata
+- [ ]  Write blog post
 
 
 ## License
