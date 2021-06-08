@@ -1,0 +1,26 @@
+name: HomeUrbit
+type: sw.application
+description: >-
+  Urbit is a new OS and peer-to-peer network that’s simple by design, built to last forever, and 100% owned by its users.
+  Urbit OS makes the server side usable for individuals without the need for MEGACORP to run their software. Urbit is your own personal server. 
+  Urbit is your last computer. Welcome.
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/OdysLam/home-urbit.git'
+logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://github.com/OdysLam/home-urbit/blob/master/assets/%20urbit-home.png?raw=true
+data:
+  applicationEnvironmentVariables:
+    - MINIO_ROOT_USER: urbit-home
+    - MINIO_ROOT_PASSWORD: urbit-home
+    - NGINX_USER: urbit-home
+    - NGINX_PASSWORD: urbit-home
+  defaultDeviceType: raspberrypi4-64
+  supportedDeviceTypes:
+    - generic-aarch64	
+version: "0.1.00"
