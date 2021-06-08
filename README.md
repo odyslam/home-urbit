@@ -1,8 +1,10 @@
+![cover image](https://github.com/OdysLam/home-urbit/blob/master/assets/%20urbit-home.png?raw=true)
+
 # Introduction 
 
 Effortlessly install and monitor your last personal server, Urbit.
 
-[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit.git)
+[![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit.git)
 
 ## Standing on the shoulders of giants
 
