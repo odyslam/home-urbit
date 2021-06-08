@@ -13,18 +13,12 @@ services:
     ports:
      - "80:80"
      - "443:443"
-    command: "nginx -g 'daemon off;'"
   # The following command will start the nginx container and let it idle. That way,
   # we can ssh into the container and shange the nginx configuration files.
   # command: ["tail", "-f", "/dev/null"]
   minio-s3:
-    # build: ./minio
-    image: minio/minio
+    build: ./minio
     restart: 'unless-stopped'
-    environment:
-      - MINIO_ROOT_USER=urbitadmin
-      - MINIO_ROOT_PASSWORD=urbitadmin
-    command: ["server", "/data"]
     volumes: 
       - minio:/data
     ports: 
@@ -35,6 +29,7 @@ services:
     build: ./urbit
     privileged: false
     restart: 'unless-stopped'
+    # network_mode: host
     volumes:
       - urbit:/urbit
     ports:
@@ -45,7 +40,6 @@ services:
     depends_on: 
         - "nginx"
   netdata:
-    # image: netdata/netdata
     build: ./netdata
     privileged: true
     ports:
