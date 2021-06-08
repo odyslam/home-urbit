@@ -2,6 +2,8 @@
 
 Effortlessly install and monitor your last personal server, Urbit.
 
+[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit.git)
+
 ## Standing on the shoulders of giants
 
 - [netdata/netdata](https://github.com/netdata/netdata)
