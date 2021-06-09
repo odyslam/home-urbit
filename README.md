@@ -34,9 +34,9 @@ The same setup will work flawlessly if you install another OS into the raspberry
 - [x]  Add support for Deploy with balena 1 click deployment
 - [x]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
 - [x]  Add local nginx with username/password combo for netdata security
+- [x]  Add logic to automatically detect PGID and docker/balena socket in Netdata
 - [ ]  Fix reverse proxy for urbit
 - [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
-- [ ]  Add logic to automatically detect PGID and docker/balena socket in Netdata
 - [ ]  Write blog post
 
 
