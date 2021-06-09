@@ -5,7 +5,9 @@
 Urbit is a new OS and peer-to-peer network that’s simple by design, built to last forever, and 100% owned by its users.
 Urbit OS makes the server side usable for individuals without the need for MEGACORP to run their software. Urbit is your own personal server. 
 Urbit is your last computer. Welcome.
-[![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit.git)
+[![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)]
+
+(https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit.git)
 
 ## Deploy with balena
 
@@ -31,7 +33,8 @@ The same setup will work flawlessly if you install another OS into the raspberry
 - [x]  Add minio service to docker-compose.yml for a local S3 replacement
 - [x]  Add support for Deploy with balena 1 click deployment
 - [x]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
-- [x]  Add local nginx reverse-proxy with username/password combo for security
+- [x]  Add local nginx with username/password combo for netdata security
+- [ ]  Fix reverse proxy for urbit
 - [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [ ]  Add logic to automatically detect PGID and docker/balena socket in Netdata
 - [ ]  Write blog post
