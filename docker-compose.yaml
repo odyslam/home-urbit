@@ -23,20 +23,17 @@ services:
       - minio:/data
     ports: 
       - "9000:9000"
-    depends_on: 
-      - "nginx"
+    depends_on: ["nginx"]
   urbit:
     build: ./urbit
     privileged: false
     restart: 'unless-stopped'
-    # network_mode: host
     volumes:
       - urbit:/urbit
     ports:
       - "34343:34343/udp"
-      - "80:80"
-    depends_on: 
-        - "nginx"
+      - "8080:8080"
+    depends_on: ["nginx"]
   netdata:
     build: ./netdata
     privileged: true
@@ -57,5 +54,4 @@ services:
     volumes:
       - netdatalib:/var/lib/netdata
       - netdatacache:/var/cache/netdata
-    depends_on: 
-      - "nginx"
+    depends_on: ["nginx"] 
