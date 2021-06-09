@@ -16,6 +16,30 @@ balena is completely free for up to 10 devices and most of it's components are O
 
 The same setup will work flawlessly if you install another OS into the raspberry pi and use `docker-compose up`.
 
+## Getting Started
+
+1. Click on the Button above
+
+![](/assets/deploy1.png)
+
+2. Create a balena account (or log in). Create application with default settings.
+
+![](/assets/deploy2.png)
+
+3. To add a device to the application, download the OS image and [flash](https://www.balena.io/etcher/) it to an sd card. 
+
+![](/assets/deploy3.png)
+
+4. Insert the sd card to the Rasspberry pi 4, connect it to power + Internet. Wait to donwload your application. 
+
+5. Visit the Cloud Dashboard to see that everything works as expected
+
+![image](https://user-images.githubusercontent.com/13405632/121319220-aafa6e80-c914-11eb-803d-732134d693bd.png)
+
+6. Click on the web terminal, select `urbit` and open a terminal session. Run command `/usr/sbin/get-urbit-code.sh`. This command will give you the code for your Urbit. By default, it will boot a **new** comet.
+
+7. Visit the following address to access `~Landscape`: <ip_address>:8080. e.g 192.168.1.249:8080 (as you can see from the cloud dashboard above).
+
 ## Standing on the shoulders of giants
 
 - [netdata/netdata](https://github.com/netdata/netdata)
