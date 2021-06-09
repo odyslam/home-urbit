@@ -6,9 +6,7 @@ Urbit is a new OS and peer-to-peer network that’s simple by design, built to l
 Urbit OS makes the server side usable for individuals without the need for MEGACORP to run their software. Urbit is your own personal server. 
 Urbit is your last computer. Welcome.
 
-![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)]
-
-(https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit)
+[![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit)
 
 ## Deploy with balena
 
