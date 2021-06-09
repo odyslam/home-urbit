@@ -40,10 +40,22 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 7. Visit the following address to access `~Landscape`: <ip_address>:8080. e.g 192.168.1.249:8080 (as you can see from the cloud dashboard above).
 
+## Getting Started without balena
+
+1. Download an OS system (e.g [Raspberry Pi OS](https://www.raspberrypi.org/software/)). **Make sure it's 64-bit**.
+2. Flash the image into an sd card.
+3. Get terminal access to the machine (e.g using ssh) and [install docker](https://docs.docker.com/engine/install/debian/).
+4. Install `git` , run `sudo apt-get install git`
+5. Download this repository, run `git clone https://github.com/odyslam/home-urbit
+6. `cd` into the repository
+7. run `sudo docker-compose up`
+8. Celebrate 🍾
+
 ## Standing on the shoulders of giants
 
 - [netdata/netdata](https://github.com/netdata/netdata)
 - [balena](https://balena.io)
+- [minio](https://min.io/)
 - Urbit on Raspberry pi:
     - [Urbit grant](https://grants.urbit.org/proposals/337545546-urbian-a-customized-linux-distribution-for-urbit-appliances?tab=milestones) 
     - [Homepage](https://botter-nidnul.github.io/AArch64_Urbit_Static_Binaries.html)
