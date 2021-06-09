@@ -13,6 +13,7 @@ services:
     ports:
      - "80:80"
      - "443:443"
+    depends_on: ["minio-s3", "netdata", "urbit"]
   # The following command will start the nginx container and let it idle. That way,
   # we can ssh into the container and shange the nginx configuration files.
   # command: ["tail", "-f", "/dev/null"]
@@ -23,7 +24,8 @@ services:
       - minio:/data
     ports: 
       - "9000:9000"
-    depends_on: ["nginx"]
+ # Urbit will automatically bind port 80. We bind the container's port 80 to the host's port 8080. 
+ # That way, we run nginx reverse-proxy and urbit in parallel.  
   urbit:
     build: ./urbit
     privileged: false
@@ -32,9 +34,8 @@ services:
       - urbit:/urbit
     ports:
       - "34343:34343/udp"
-      - "8080:8080"
-      - "80:80"
-    depends_on: ["nginx"]
+      - "8080:80"
+    depends_on: ["minio-s3"]
   netdata:
     build: ./netdata
     privileged: true
@@ -52,4 +53,3 @@ services:
     volumes:
       - netdatalib:/var/lib/netdata
       - netdatacache:/var/cache/netdata
-    depends_on: ["nginx"] 
