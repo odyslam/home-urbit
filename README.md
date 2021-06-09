@@ -51,6 +51,17 @@ The same setup will work flawlessly if you install another OS into the raspberry
 7. run `sudo docker-compose up`
 8. Celebrate 🍾
 
+
+## Configure minio S3 storage
+
+![](/assets/minio.gif)
+
+1. Visit Landscape System Preferences
+2. Go to remote storage
+3. Add `minio-s3:9000` as the endpoint
+4. Add username/password (default are `home-urbit`/`home-urbit`)
+5. 🤙
+
 ## Standing on the shoulders of giants
 
 - [netdata/netdata](https://github.com/netdata/netdata)
