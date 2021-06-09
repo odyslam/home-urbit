@@ -46,10 +46,16 @@ The same setup will work flawlessly if you install another OS into the raspberry
 2. Flash the image into an sd card.
 3. Get terminal access to the machine (e.g using ssh) and [install docker](https://docs.docker.com/engine/install/debian/).
 4. Install `git` , run `sudo apt-get install git`
-5. Download this repository, run `git clone https://github.com/odyslam/home-urbit
+5. Download this repository, run `git clone https://github.com/odyslam/home-urbit`
 6. `cd` into the repository
 7. run `sudo docker-compose up`
-8. Celebrate 🍾
+8. After you seee output from the Urbit container that references `localhost`, open a second terminal window. 
+9. In the second window, run `sudo docker ps` to find the `ID` of the container that runs `urbit`. 
+10. Run `sudo docker exec -it /bin/bash/ <container_ID`. You will get a new terminal inside the container.
+11. Run `/usr/sbin/get-urbit-code.sh`. You should see a code on the terminal. That's the password for your ship. Note it down.
+12. Type `exit` to exit the shell. 
+13. visit `<raspberrypi_IP>` from a browser and enter the code you noted. 
+14. Celebrate 🍾
 
 ## Standing on the shoulders of giants
 
@@ -67,7 +73,7 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 - [x]  Add minio service to docker-compose.yml for a local S3 replacement
 - [x]  Add support for Deploy with balena 1 click deployment
-- [x]  "Design" workflow to move an existing pier into the container (via Dockerfile?, via rsync?)
+- [x]  "Design" workflow to move an existing pier into the container
 - [x]  Add local nginx with username/password combo for netdata security
 - [x]  Add logic to automatically detect PGID and docker/balena socket in Netdata
 - [ ]  Fix reverse proxy for urbit
