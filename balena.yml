@@ -13,7 +13,7 @@ logo:
     type: blob.asset
     data:
       url: >-
-        https://github.com/OdysLam/home-urbit/blob/master/assets/%20urbit-home.png?raw=true
+        https://github.com/OdysLam/home-urbit/blob/master/assets/planet.svg?raw=true
 data:
   applicationEnvironmentVariables:
     - MINIO_ROOT_USER: urbit-home
