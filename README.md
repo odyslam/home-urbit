@@ -87,6 +87,8 @@ The same setup will work flawlessly if you install another OS into the raspberry
 - [x]  "Design" workflow to move an existing pier into the container
 - [x]  Add local nginx with username/password combo for netdata security
 - [x]  Add logic to automatically detect PGID and docker/balena socket in Netdata
+- [ ]  Add instructions for setting up keys/planets and copying an existing pier
+- [ ]  PR this repo to awesome-urbit
 - [ ]  Fix reverse proxy for multiple urbits
 - [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [ ]  Write blog post
