@@ -16,7 +16,7 @@ balena is completely free for up to 10 devices and most of it's components are O
 
 The same setup will work flawlessly if you install another OS into the raspberry pi and use `docker-compose up`.
 
-## Getting Started
+## Getting Started with a new comet
 
 1. Click on the Button above
 
@@ -39,6 +39,17 @@ The same setup will work flawlessly if you install another OS into the raspberry
 6. Click on the web terminal, select `urbit` and open a terminal session. Run command `/usr/sbin/get-urbit-code.sh`. This command will give you the code for your Urbit. By default, it will boot a **new** comet.
 
 7. Visit the following address to access `~Landscape`: <ip_address>:8080. e.g 192.168.1.249:8080 (as you can see from the cloud dashboard above).
+
+## Getting Started with a planet
+
+1. Run `git clone https://github.com/odyslam/home-urbit` on your computer. 
+2. Copy the `<private_key_name>.key` file and paste it inside the `urbit` directory of the repo you just download. So `~/home-urbit/urbit/<private_key_name>.key`
+3. Create a [balena-cloud account](https://dashboard.balena-cloud.com/apps), then create an application for device type ("Raspberry pi 4"). Let's name it `home-urbit`. 
+4. Download [balenacli](https://github.com/balena-io/balena-cli/blob/master/INSTALL.md), install it and [sign into](https://www.balena.io/docs/reference/balena-cli/) your account.
+5. `cd` into the repo directory `home-urbit` and run `balena push home-urbit`. 
+
+The reason we can't follow the "Deploy with balena" button flow is that we need to add our key into the application files.
+
 
 ## Getting Started without balena
 
