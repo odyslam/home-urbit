@@ -6,7 +6,7 @@ assets:
     type: blob.asset
     data:
       url: 'https://github.com/OdysLam/home-urbit.git'
-logo:
+  logo:
     type: blob.asset
     data:
       url: 'https://raw.githubusercontent.com/OdysLam/home-urbit/master/assets/logo.png'
