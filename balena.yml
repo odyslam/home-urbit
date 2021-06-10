@@ -1,6 +1,7 @@
 name: HomeUrbit
 type: sw.application
 description: "Urbit is a new OS and peer-to-peer network that’s simple by design, built to last forever, and 100% owned by its users. Urbit is your last computer. Welcome."
+joinable: false
 assets:
   repository:
     type: blob.asset
