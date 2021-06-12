@@ -39,6 +39,12 @@ The same setup will work flawlessly if you install another OS into the raspberry
 - How to add environment variables with Docker/Docker-compose: [Docker documentation](https://docs.docker.com/compose/environment-variables/)
 - How to add environment variables with balena: [balena docs](https://www.balena.io/docs/learn/manage/serv-vars/)
 
+## Dashboards
+
+- `homeurbit.local/`: Landscape
+- `homeurbit.local/minio/`: Minio dashboard -- Local s3 for your urbit
+- `homeurbit.local/netdata/`: Netdata dashboard -- Monitor your device and urbit
+
 ## Getting Started with a new comet
 
 1. Click on the Button above
