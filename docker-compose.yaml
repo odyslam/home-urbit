@@ -30,6 +30,7 @@ services:
     restart: 'unless-stopped'
     volumes:
       - urbit:/urbit/piers
+      - urbit:/urbit/keys
     ports:
       - "34343:34343/udp"
     depends_on: ["minio-s3"]
