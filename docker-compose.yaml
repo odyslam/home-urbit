@@ -22,8 +22,6 @@ services:
     restart: 'unless-stopped'
     volumes: 
       - minio:/data
-    ports: 
-      - "9000:9000"
  # Urbit will automatically bind port 80. We bind the container's port 80 to the host's port 8080. 
  # That way, we run nginx reverse-proxy and urbit in parallel.  
   urbit:
@@ -34,15 +32,12 @@ services:
       - urbit:/urbit/piers
     ports:
       - "34343:34343/udp"
-      - "8080:80"
     depends_on: ["minio-s3"]
     labels:
       io.balena.features.supervisor-api: 1
   netdata:
     build: ./netdata
     privileged: true
-    ports:
-      - '19999:19999'
     cap_add:
       - SYS_PTRACE
     security_opt:
