@@ -16,6 +16,29 @@ balena is completely free for up to 10 devices and most of it's components are O
 
 The same setup will work flawlessly if you install another OS into the raspberry pi and use `docker-compose up`.
 
+## Available Environment variables by service
+
+### Urbit
+
+- $AMES_PORT: The port for the ames protocol. Default value: 34343
+- $PIER_NAME: If multiple piers are found, choose this pier to boot from.
+- $TRANSFER_KEY: Idle the container so that I can SSH into it and place my keyfile to boot from.
+
+### Nginx
+
+- $NGINX_PASSWORD: The password for Nginx authentication. Default: home-urbit
+- $NGINX_USER: The user for Nginx authentication. Default: home-urbit
+
+### Minio-s3
+
+- $MINIO_ROOT_USER: The password for minio authnetication. Default: home-urbit
+- $MINIO_ROOT_USER: The user for minio authnetication. Default: home-urbit
+
+### Relevant documentation
+
+- How to add environment variables with Docker/Docker-compose: [Docker documentation](https://docs.docker.com/compose/environment-variables/)
+- How to add environment variables with balena: [balena docs](https://www.balena.io/docs/learn/manage/serv-vars/)
+
 ## Getting Started with a new comet
 
 1. Click on the Button above
