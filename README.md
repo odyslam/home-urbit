@@ -1,4 +1,4 @@
-![cover image](https://github.com/OdysLam/home-urbit/blob/master/assets/%20urbit-home.png?raw=true)
+![_Home-Urbit](https://user-images.githubusercontent.com/13405632/121785641-98599100-cbc3-11eb-861c-77a95a7db030.png)
 
 # Introduction 
 
@@ -38,6 +38,12 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 - How to add environment variables with Docker/Docker-compose: [Docker documentation](https://docs.docker.com/compose/environment-variables/)
 - How to add environment variables with balena: [balena docs](https://www.balena.io/docs/learn/manage/serv-vars/)
+
+## Dashboards
+
+- `homeurbit.local/`: Landscape
+- `homeurbit.local/minio/`: Minio dashboard -- Local s3 for your urbit
+- `homeurbit.local/netdata/`: Netdata dashboard -- Monitor your device and urbit
 
 ## Getting Started with a new comet
 
