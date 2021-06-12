@@ -40,15 +40,31 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 7. Visit the following address to access `~Landscape`: <ip_address>:8080. e.g 192.168.1.249:8080 (as you can see from the cloud dashboard above).
 
-## Getting Started with a planet
+## Getting Started with a planet/star/galaxy keyfile
 
 1. Run `git clone https://github.com/odyslam/home-urbit` on your computer. 
-2. Copy the `<private_key_name>.key` file and paste it inside the `urbit` directory of the repo you just download. So `~/home-urbit/urbit/<private_key_name>.key`
+2. Move the `<private_key_name>.key` file inside the `urbit/keys/` directory of the repo you just download. So `~/home-urbit/urbit/keys/<private_key_name>.key`
 3. Create a [balena-cloud account](https://dashboard.balena-cloud.com/apps), then create an application for device type ("Raspberry pi 4"). Let's name it `home-urbit`. 
 4. Download [balenacli](https://github.com/balena-io/balena-cli/blob/master/INSTALL.md), install it and [sign into](https://www.balena.io/docs/reference/balena-cli/) your account.
 5. `cd` into the repo directory `home-urbit` and run `balena push home-urbit`. 
 
 The reason we can't follow the "Deploy with balena" button flow is that we need to add our key into the application files.
+
+### ALTERNATIVE: Manually add the keyfile inside the urbit container
+
+If you don't want to add your keyfile inside the docker-compose file, there is another option. 
+
+Define the `device service environment variable` `TRANSFER_KEY`=`1`. The Urbit container will start, but stay idle. Then you can ssh into the container (either using `balena ssh` or the web terminal) and manually copy over your key into the directory `urbit/keys`. After you do, remove the environment variable. The container will restart and will pick up your key.
+
+This is better for security/privacy reasons, as all the files that you add in the directory, will be uploaded to a remote build server. There, it will build the containers and then send them to the device. Thus, the key will temporally exist on the remote server.
+
+## Getting Started with an existing pier
+
+The best option here is to follow the [Alternative](#alternative-manually-add-the-keyfile-inside-the-urbit-container) option above and idle the container. Then, using a command as `scp` or better `rsync`, copy over the pier from your computer into the container. The pier should be placed inside the directory `/urbit/piers/<you_pier_name>`. 
+
+You might find [transfer.sh](https://transfer.sh/) handy. You upload the pier to the service and then download using `curl` from inside `urbit`. 
+
+Another option, is to manually download the source files and follow the flow that is described in [Getting Started with a planet/star/galaxy keyfile](#getting-started-with-a-planetstargalaxy-keyfile). Instead of placing the keyfile, you will place your `<your_pier_name>` inside the `/home-urbit/urbit/piers` directory, thus: `/home-urbit/urbit/piers/<your_pier_name>`.
 
 
 ## Getting Started without balena
