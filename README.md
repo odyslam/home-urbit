@@ -61,7 +61,7 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 6. Click on the web terminal, select `urbit` and open a terminal session. Run command `/usr/sbin/get-urbit-code.sh`. This command will give you the code for your Urbit. By default, it will boot a **new** comet.
 
-7. Visit the following address to access `~Landscape`: <ip_address>:8080. e.g 192.168.1.249:8080 (as you can see from the cloud dashboard above).
+7. Visit the following address to access `~Landscape`: `http://homeurbit.local`
 
 ## Getting Started with a planet/star/galaxy keyfile
 
@@ -107,6 +107,12 @@ Another option, is to manually download the source files and follow the flow tha
 13. visit `<raspberrypi_IP>` from a browser and enter the code you noted. 
 14. Celebrate 🍾
 
+
+**Note**: With docker, we can't automatically set the hostname of the device. Thus, you will need to access it via the IP and not `homeurbit.local`.
+
+If you want to change the hostname of your Raspberry Pi: https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/
+
+You will be able to access the device via `<hostname>.local`.
 
 ## Configure minio S3 storage
 
