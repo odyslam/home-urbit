@@ -1,4 +1,4 @@
-![cover image](https://github.com/OdysLam/home-urbit/blob/master/assets/%20urbit-home.png?raw=true)
+![_Home-Urbit](https://user-images.githubusercontent.com/13405632/121785641-98599100-cbc3-11eb-861c-77a95a7db030.png)
 
 # Introduction 
 
