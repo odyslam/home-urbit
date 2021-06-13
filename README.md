@@ -24,6 +24,15 @@ The same setup will work flawlessly if you install another OS into the raspberry
 - $PIER_NAME: If multiple piers are found, choose this pier to boot from.
 - $TRANSFER_KEY: Idle the container so that I can SSH into it and place my keyfile to boot from.
 
+## Netdata
+
+- $NETDATA_CLAIM_TOKEN: Claim token for Netdata Cloud
+- $NETDATA_CLAIM_ROOMS: War-room to add the Netdata Agent
+- $NETDATA_CLAIM_URL: "https://app.netdata.cloud"
+- $DO_NOT_TRACK: Set to 1 to disable anonymous product usage statistics for the Netdata agent.
+
+To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Learn](https://learn.netdata.cloud/docs/agent/claim#claim-an-agent-running-in-docker).
+
 ### Nginx
 
 - $NGINX_PASSWORD: The password for Nginx authentication. Default: home-urbit
@@ -149,8 +158,8 @@ You will be able to access the device via `<hostname>.local`.
 - [x]  "Design" workflow to move an existing pier into the container
 - [x]  Add local nginx with username/password combo for netdata security
 - [x]  Add logic to automatically detect PGID and docker/balena socket in Netdata
-- [ ]  Add instructions for setting up keys/planets and copying an existing pier
-- [ ]  PR this repo to awesome-urbit
+- [x]  Add instructions for setting up keys/planets and copying an existing pier
+- [x]  PR this repo to awesome-urbit
 - [ ]  Fix reverse proxy for multiple urbits
 - [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [ ]  Write blog post
