@@ -8,6 +8,8 @@ Urbit is your last computer. Welcome.
 
 [![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit)
 
+A project by ~sipsen-pilser
+
 ## Deploy with balena
 
 [balena](https://www.balena.io/what-is-balena/) is a complete set of tools for building, deploying and managing fleets of connected linux devices. We opted to use balena because it manages the whole lifecycle of our device and application. We only have to download the OS from our account and load it into the SD card for the Raspberry pi. 
@@ -168,6 +170,7 @@ You will be able to access the device via `<hostname>.local`.
 - [x]  PR this repo to awesome-urbit
 - [ ]  Fix reverse proxy for multiple urbits
 - [x]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
+- [ ]  Add a script to send arbitrary command to dojo (`/usr/sbin/send-urbit-command.sh <command>`)
 - [ ]  Write blog post
 
 
