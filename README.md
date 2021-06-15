@@ -54,6 +54,12 @@ To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Le
 - `homeurbit.local/minio/`: Minio dashboard -- Local s3 for your urbit
 - `homeurbit.local/netdata/`: Netdata dashboard -- Monitor your device and urbit
 
+## Tips
+
+- You can access your ~Home-Urbit, from anywhere using [balena Public Device URLs](https://www.balena.io/docs/learn/develop/runtime/#public-device-urls)
+- You can ssh into your device via balena webterminal, balena ssh, and regular ssh. Read more on the [docs](https://www.balena.io/docs/learn/manage/ssh-access/)
+- You can tunnel any connection from your local computer to any port on the device, using [balena tunnel](https://www.balena.io/docs/reference/balena-cli/#tunnel-deviceorapplication). This means that you can tunnel port `80` of the device to `localhost:80` and connect to Urbit Landscape from anywhere. (Also possible via using balena Public Device URLs).
+
 ## Getting Started with a new comet
 
 1. Click on the Button above
@@ -161,7 +167,7 @@ You will be able to access the device via `<hostname>.local`.
 - [x]  Add instructions for setting up keys/planets and copying an existing pier
 - [x]  PR this repo to awesome-urbit
 - [ ]  Fix reverse proxy for multiple urbits
-- [ ]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
+- [x]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [ ]  Write blog post
 
 
