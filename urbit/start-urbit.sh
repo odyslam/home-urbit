@@ -78,7 +78,7 @@ else
             echo "Urbit is now idling.."
             tail -f /dev/null
         else 
-            echo "Urbit detected multiple piers. Urbit also detected user preference: $PIER_NAME"
+            echo "Urbit detected multiple piers. Urbit also detected the env variable PIER_NAME: $PIER_NAME"
             urbit -t -p $AMES_PORT piers/$PIER_NAME
         fi
     fi
