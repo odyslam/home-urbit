@@ -76,7 +76,7 @@ To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Le
 
 ![](/assets/deploy3.png)
 
-4. Insert the sd card to the Rasspberry pi 4, connect it to power + Internet. Wait to donwload your application. 
+4. Insert the sd card to the Rasspberry pi 4, connect it to power + Internet. Wait to download your application. 
 
 5. Visit the Cloud Dashboard to see that everything works as expected
 
@@ -122,7 +122,7 @@ Another option, is to manually download the source files and follow the flow tha
 5. Download this repository, run `git clone https://github.com/odyslam/home-urbit`
 6. `cd` into the repository
 7. run `sudo docker-compose up`
-8. After you seee output from the Urbit container that references `localhost`, open a second terminal window. 
+8. After you seee output from the Urbit container that references `localhost`, open a second terminal win. 
 9. In the second window, run `sudo docker ps` to find the `ID` of the container that runs `urbit`. 
 10. Run `sudo docker exec -it /bin/bash/ <container_ID`. You will get a new terminal inside the container.
 11. Run `/usr/sbin/get-urbit-code.sh`. You should see a code on the terminal. That's the password for your ship. Note it down.
