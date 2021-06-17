@@ -22,33 +22,39 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 ### Urbit
 
-- $AMES_PORT: The port for the ames protocol. Default value: 34343
-- $PIER_NAME: If multiple piers are found, choose this pier to boot from.
-- $TRANSFER_KEY: Idle the container so that I can SSH into it and place my keyfile to boot from.
+- `$AMES_PORT`: The port for the ames protocol. Default value: 34343
+- `$PIER_NAME`: If multiple piers are found, choose this pier to boot from.
+- `$TRANSFER_KEY`: Idle the container so that I can SSH into it and place my keyfile to boot from.
 
 ## Netdata
 
-- $NETDATA_CLAIM_TOKEN: Claim token for Netdata Cloud
-- $NETDATA_CLAIM_ROOMS: War-room to add the Netdata Agent
-- $NETDATA_CLAIM_URL: "https://app.netdata.cloud"
-- $DO_NOT_TRACK: Set to 1 to disable anonymous product usage statistics for the Netdata agent.
+- `$NETDATA_CLAIM_TOKEN`: Claim token for Netdata Cloud
+- `$NETDATA_CLAIM_ROOMS`: War-room to add the Netdata Agent
+- `$NETDATA_CLAIM_URL`: "https://app.netdata.cloud"
+- `$DO_NOT_TRACK`: Set to 1 to disable anonymous product usage statistics for the Netdata agent.
 
 To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Learn](https://learn.netdata.cloud/docs/agent/claim#claim-an-agent-running-in-docker).
 
 ### Nginx
 
-- $NGINX_PASSWORD: The password for Nginx authentication. Default: home-urbit
-- $NGINX_USER: The user for Nginx authentication. Default: home-urbit
+- `$NGINX_PASSWORD`: The password for Nginx authentication. Default: home-urbit
+- `$NGINX_USER`: The user for Nginx authentication. Default: home-urbit
 
 ### Minio-s3
 
-- $MINIO_ROOT_USER: The password for minio authnetication. Default: home-urbit
-- $MINIO_ROOT_USER: The user for minio authnetication. Default: home-urbit
+- `$MINIO_ROOT_USER`: The password for minio authnetication. Default: home-urbit
+- `$MINIO_ROOT_USER`: The user for minio authnetication. Default: home-urbit
 
 ### Relevant documentation
 
 - How to add environment variables with Docker/Docker-compose: [Docker documentation](https://docs.docker.com/compose/environment-variables/)
 - How to add environment variables with balena: [balena docs](https://www.balena.io/docs/learn/manage/serv-vars/)
+
+## Available commands
+
+`/usr/sbin/get-urbit-code.sh`: Get your Ship's code. Required to log in.
+`/usr/sbin/reset-urbit-code.sh`: Reset your Ship's code.
+`/usr/sbin/run-urbit-cmd.sh -a <app> -c <ommand> -s <stdout>`: Run any command on your Urbit. For advanced users. You can find the source code for this script [here](https://github.com/OdysLam/home-urbit/blob/master/urbit/run-urbit-cmd.sh)
 
 ## Dashboards
 
