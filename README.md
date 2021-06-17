@@ -52,9 +52,9 @@ To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Le
 
 ## Available commands
 
-`/usr/sbin/get-urbit-code.sh`: Get your Ship's code. Required to log in.
-`/usr/sbin/reset-urbit-code.sh`: Reset your Ship's code.
-`/usr/sbin/run-urbit-cmd.sh -a <app> -c <ommand> -s <stdout>`: Run any command on your Urbit. For advanced users. You can find the source code for this script [here](https://github.com/OdysLam/home-urbit/blob/master/urbit/run-urbit-cmd.sh)
+- `/usr/sbin/get-urbit-code.sh`: Get your Ship's code. Required to log in.
+- `/usr/sbin/reset-urbit-code.sh`: Reset your Ship's code.
+- `/usr/sbin/run-urbit-cmd.sh -a <app> -c <ommand> -s <stdout>`: Run any command on your Urbit. For advanced users. You can find the source code for this script [here](https://github.com/OdysLam/home-urbit/blob/master/urbit/run-urbit-cmd.sh)
 
 ## Dashboards
 
