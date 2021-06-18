@@ -50,9 +50,9 @@ To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Le
 - How to add environment variables with Docker/Docker-compose: [Docker documentation](https://docs.docker.com/compose/environment-variables/)
 - How to add environment variables with balena: [balena docs](https://www.balena.io/docs/learn/manage/serv-vars/)
 
-## Available commands
+## Available scripts
 
-- `/usr/sbin/get-urbit-code.sh`: Get your Ship's code. Required to log in.
+- `/usr/sbin/get-urbit-code.sh`: Get your Ship's code. This is required so that you can log into your ship for the first time.
 - `/usr/sbin/reset-urbit-code.sh`: Reset your Ship's code.
 - `/usr/sbin/run-urbit-cmd.sh -a <app> -c <ommand> -s <stdout>`: Run any command on your Urbit. For advanced users. You can find the source code for this script [here](https://github.com/OdysLam/home-urbit/blob/master/urbit/run-urbit-cmd.sh)
 
@@ -88,7 +88,7 @@ To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Le
 
 ![image](https://user-images.githubusercontent.com/13405632/121319220-aafa6e80-c914-11eb-803d-732134d693bd.png)
 
-6. Click on the web terminal, select `urbit` and open a terminal session. Run command `/usr/sbin/get-urbit-code.sh`. This command will give you the code for your Urbit. By default, it will boot a **new** comet.
+6. Click on the web terminal, select `urbit` and open a terminal session. Run script `/usr/sbin/get-urbit-code.sh`. This script will give you the code for your Urbit. 
 
 7. Visit the following address to access `~Landscape`: `http://homeurbit.local`
 
