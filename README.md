@@ -33,7 +33,7 @@ The same setup will work flawlessly if you install another OS into the raspberry
 - `$NETDATA_CLAIM_URL`: "https://app.netdata.cloud"
 - `$DO_NOT_TRACK`: Set to 1 to disable anonymous product usage statistics for the Netdata agent.
 
-To read more about claiming the Netdata Agen on Netdata Cloud, visit [Netdata Learn](https://learn.netdata.cloud/docs/agent/claim#claim-an-agent-running-in-docker).
+To read more about claiming the Netdata Agent on Netdata Cloud, visit [Netdata Learn](https://learn.netdata.cloud/docs/agent/claim#claim-an-agent-running-in-docker).
 
 ### Nginx
 
