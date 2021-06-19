@@ -104,11 +104,11 @@ The reason we can't follow the "Deploy with balena" button flow is that we need 
 
 ### ALTERNATIVE: Manually add the keyfile inside the urbit container
 
-If you don't want to add your keyfile inside the docker-compose file, there is another option. 
+Balena will build the containers in a remote build server and send the binaries to our device. It means that whatever we add in the docker-compose application (e.g our keys), will live for a brief moment in balena's build servers, something which is not ideal from a security perspective. 
 
-Define the `device service environment variable` `TRANSFER_KEY`=`1`. The Urbit container will start, but stay idle. Then you can ssh into the container (either using `balena ssh` or the web terminal) and manually copy over your key into the directory `urbit/keys`. After you do, remove the environment variable. The container will restart and will pick up your key.
+The alternative is to deploy our application with the default settings and manually copy over our keys inside the container.
 
-This is better for security/privacy reasons, as all the files that you add in the directory, will be uploaded to a remote build server. There, it will build the containers and then send them to the device. Thus, the key will temporally exist on the remote server.
+Define the a [device service environment variable](https://www.balena.io/docs/learn/manage/serv-vars/#device-environment-and-service-variables) , with the following name and value: `TRANSFER_KEY`:`1`. The Urbit container will start, but it will **not** start Urbit. Then you can ssh into the container (either using `balena ssh` or the web terminal) and manually copy over your key into the directory `urbit/keys`. After you do, remove the environment variable we just added. The container will restart and will pick up your key.
 
 ## Getting Started with an existing pier
 
@@ -128,7 +128,7 @@ Another option, is to manually download the source files and follow the flow tha
 5. Download this repository, run `git clone https://github.com/odyslam/home-urbit`
 6. `cd` into the repository
 7. run `sudo docker-compose up`
-8. After you seee output from the Urbit container that references `localhost`, open a second terminal win. 
+8. After you seee output from the Urbit container that references `localhost`, open a second terminal window.
 9. In the second window, run `sudo docker ps` to find the `ID` of the container that runs `urbit`. 
 10. Run `sudo docker exec -it /bin/bash/ <container_ID`. You will get a new terminal inside the container.
 11. Run `/usr/sbin/get-urbit-code.sh`. You should see a code on the terminal. That's the password for your ship. Note it down.
@@ -139,9 +139,7 @@ Another option, is to manually download the source files and follow the flow tha
 
 **Note**: With docker, we can't automatically set the hostname of the device. Thus, you will need to access it via the IP and not `homeurbit.local`.
 
-If you want to change the hostname of your Raspberry Pi: https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/
-
-You will be able to access the device via `<hostname>.local`.
+If you want to [change](https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/) the hostname of your Raspberry Pi. You will be able to access the device via `<hostname>.local`.
 
 ## Configure minio S3 storage
 
@@ -175,8 +173,9 @@ You will be able to access the device via `<hostname>.local`.
 - [x]  Add instructions for setting up keys/planets and copying an existing pier
 - [x]  PR this repo to awesome-urbit
 - [ ]  Fix reverse proxy for multiple urbits
+- [ ]  Improve Time-To-First-Byte by optimizing nginx reverse proxy settings
 - [x]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
-- [ ]  Add a script to send arbitrary command to dojo (`/usr/sbin/send-urbit-command.sh <command>`)
+- [x]  Add a script to send arbitrary command to dojo (`/usr/sbin/send-urbit-command.sh <command>`)
 - [ ]  Write blog post
 
 
