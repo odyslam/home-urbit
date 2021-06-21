@@ -151,6 +151,15 @@ If you want to [change](https://blog.jongallant.com/2017/11/raspberrypi-change-h
 4. Add username/password (default are `home-urbit`/`home-urbit`)
 5. 🤙
 
+## Monitoring with Netdata
+
+### Urbit's container metrics
+![image](https://user-images.githubusercontent.com/13405632/122733584-fce0b400-d285-11eb-811c-e42cffde2a40.png)
+
+### Urbit's process metrics
+![image](https://user-images.githubusercontent.com/13405632/122733708-17b32880-d286-11eb-90d3-4d73c70bac16.png)
+
+
 ## Standing on the shoulders of giants
 
 - [netdata/netdata](https://github.com/netdata/netdata)
