@@ -43,13 +43,14 @@ To read more about claiming the Netdata Agent on Netdata Cloud, visit [Netdata L
 
 ### Nginx
 
-- `$NGINX_PASSWORD`: The password for Nginx authentication. Default: home-urbit
 - `$NGINX_USER`: The user for Nginx authentication. Default: home-urbit
+- `$NGINX_PASSWORD`: The password for Nginx authentication. Default: home-urbit
+
 
 ### Minio-s3
 
-- `$MINIO_ROOT_USER`: The password for minio authnetication. Default: home-urbit
 - `$MINIO_ROOT_USER`: The user for minio authnetication. Default: home-urbit
+- `$MINIO_ROOT_PASSWORD`: The password for minio authnetication. Default: home-urbit
 
 ### Relevant documentation
 
