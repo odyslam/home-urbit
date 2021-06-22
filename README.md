@@ -8,7 +8,13 @@ Urbit is your last computer. Welcome.
 
 [![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit)
 
-A project by ~sipsen-pilser
+## Engage
+
+A project by ~sipsen-pilser. 
+
+If you want to chat about this:
+- open a GitHub issue
+- Join ~middev/the-forge and susbscribe to the project's channel
 
 ## Deploy with balena
 
