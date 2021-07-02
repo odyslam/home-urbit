@@ -188,12 +188,14 @@ If you want to [change](https://blog.jongallant.com/2017/11/raspberrypi-change-h
 - [x]  Add logic to automatically detect PGID and docker/balena socket in Netdata
 - [x]  Add instructions for setting up keys/planets and copying an existing pier
 - [x]  PR this repo to awesome-urbit
-- [ ]  Fix reverse proxy for multiple urbits
-- [ ]  Improve Time-To-First-Byte by optimizing nginx reverse proxy settings
 - [x]  Add helpful tips (e.g balena tunnel, ssh keys, etc.)
 - [x]  Add a script to send arbitrary command to dojo (`/usr/sbin/send-urbit-command.sh <command>`)
+- [ ]  Submit grant proposal
+- [ ]  Fix reverse proxy for multiple urbits
+- [ ]  Fix minio setup (change default usr/pswd, add dns)
+- [ ]  Add VPN functionality outside of balena (e.g tailscale)
+- [ ]  Improve Time-To-First-Byte by optimizing nginx reverse proxy settings
 - [ ]  Write blog post
-
 
 ## License
 
