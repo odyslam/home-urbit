@@ -33,6 +33,7 @@ services:
       - urbit:/urbit/keys
     ports:
       - "34343:34343/udp"
+      - "8080:80"
     depends_on: ["minio-s3"]
     labels:
       io.balena.features.supervisor-api: 1
