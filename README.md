@@ -8,7 +8,13 @@ Urbit is your last computer. Welcome.
 
 [![balena deploy button](https://github.com/OdysLam/home-urbit/blob/master/assets/Deploy%20Urbit%20with%20Balena.svg?raw=true)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/OdysLam/home-urbit)
 
-A project by ~sipsen-pilser
+## Engage
+
+A project by ~sipsen-pilser. 
+
+If you want to chat about this:
+- open a GitHub issue
+- Join ~middev/the-forge and susbscribe to the project's channel
 
 ## Deploy with balena
 
@@ -37,13 +43,14 @@ To read more about claiming the Netdata Agent on Netdata Cloud, visit [Netdata L
 
 ### Nginx
 
-- `$NGINX_PASSWORD`: The password for Nginx authentication. Default: home-urbit
 - `$NGINX_USER`: The user for Nginx authentication. Default: home-urbit
+- `$NGINX_PASSWORD`: The password for Nginx authentication. Default: home-urbit
+
 
 ### Minio-s3
 
-- `$MINIO_ROOT_USER`: The password for minio authnetication. Default: home-urbit
 - `$MINIO_ROOT_USER`: The user for minio authnetication. Default: home-urbit
+- `$MINIO_ROOT_PASSWORD`: The password for minio authnetication. Default: home-urbit
 
 ### Relevant documentation
 
