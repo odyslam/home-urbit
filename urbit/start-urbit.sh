@@ -55,7 +55,6 @@ if [ -e keys/*.key ]; then
         rm "$keyname"
         echo "Urbit will now restart the container."
 elif [ -z "$dirname" ]; then
-    cd ..
     random=$RANDOM
     echo "Urbit did not detect any user selection. Booting a comet with the random name: comet-$random."
     urbit -t -p $AMES_PORT -c piers/comet-$random  
