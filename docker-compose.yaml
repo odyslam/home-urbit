@@ -6,7 +6,16 @@ volumes:
   netdatalib:
   minio:
   nginx:
+  radicle-seed:
 services:
+  radicle:
+    build: ./radicle-seed
+    ports:
+     - "12345:12345"
+     - "8081:80"
+    volumes:
+      - radicle-seed: /radicle-seed/
+    restart: "unless-stopped"
   nginx:
     build: ./nginx
     restart: 'unless-stopped'
