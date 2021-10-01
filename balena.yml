@@ -19,4 +19,8 @@ data:
     - NGINX_PASSWORD: urbit-home
   defaultDeviceType: raspberrypi4-64
   supportedDeviceTypes:
-    - generic-aarch64	
+    - generic-aarch64
+    - intel-nuc
+    - generic
+    - genericx86-64-ext
+    - qemux86-64
