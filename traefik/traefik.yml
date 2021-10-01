@@ -1,0 +1,11 @@
+api:
+  dashboard: true
+entryPoints:
+  http:
+    address: ":80"
+  https:
+    address: ":443"
+  providers:
+      docker:
+        endpoint: "unix:///var/run/balena.sock"
+        exposedByDefault: false
