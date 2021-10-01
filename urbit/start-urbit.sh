@@ -5,8 +5,16 @@ if [ -z "$AMES_PORT" ]; then
     AMES_PORT=34343
     export AMES_PORT
 fi
+
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "Starting Urbit with Ames port: $AMES_PORT"
+
+if [[ $BALENA_ARCH == "aarch64" ]]; then
+    echo "Urbit binary:  $(which urbit)"
+elif [[ $BALENA_ARCH == "amd64" ]]; then
+  export PATH="$PATH:/urbit/binary/urbit"
+  echo "Urbit binary: $(which urbit)"
+fi
 
 # Make a call to the balena supervisor to set hostname to homeurbit.
 # This makes the device accessible as `homeurbit.local`
@@ -38,7 +46,7 @@ fi
 #   a) If only 1 pier exists, boot that
 #   b) If multiple piers exist, ask user to either define an env_varible and restart the container
 #      or delete the other piers until there is only one
-#      To add a service variable, visit https://www.balena.io/docs/learn/manage/serv-vars/ 
+#      To add a service variable, visit https://www.balena.io/docs/learn/manage/serv-vars/
 #      Urbit expects variable named: PIER_NAME
 # 3) Boot new comet with random name
 
@@ -57,8 +65,8 @@ if [ -e keys/*.key ]; then
 elif [ -z "$dirname" ]; then
     random=$RANDOM
     echo "Urbit did not detect any user selection. Booting a comet with the random name: comet-$random."
-    urbit -t -p $AMES_PORT -c piers/comet-$random  
-else 
+    urbit -t -p $AMES_PORT -c piers/comet-$random
+else
     if [ $dirNumber == "1" ];then
         echo "Urbit detected a Pier named $dirname"
         urbit -t -p $AMES_PORT piers/$(basename $dirname)
@@ -76,7 +84,7 @@ else
             echo "If you add the variable, it will restart automatically. If you ssh, please restart the container."
             echo "Urbit is now idling.."
             tail -f /dev/null
-        else 
+        else
             echo "Urbit detected multiple piers. Urbit also detected the env variable PIER_NAME: $PIER_NAME"
             urbit -t -p $AMES_PORT piers/$PIER_NAME
         fi
