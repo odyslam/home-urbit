@@ -7,6 +7,6 @@ if [[ -z "${MINIO_ROOT_PASSWORD}" ]]; then
     export MINIO_ROOT_PASSWORD='urbit-home'
 fi
 # start server
-minio server /data
+minio server --console-address :9001 /data
 # Use the command bellow to start the container idle
 # tail -f /dev/null
