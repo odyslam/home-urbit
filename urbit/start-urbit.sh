@@ -8,10 +8,10 @@ fi
 
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "Starting Urbit with Ames port: $AMES_PORT"
-
-if [[ $BALENA_ARCH == "aarch64" ]]; then
+DEVICE_ARCH=$(uname -m)
+if [[ $DEVICE_ARCH == "aarch64" ]]; then
     echo "Urbit binary:  $(which urbit)"
-elif [[ $BALENA_ARCH == "amd64" ]]; then
+elif [[ $DEVICE_ARCH == "x86_64" ]]; then
   export PATH="$PATH:/urbit/binary/urbit"
   echo "Urbit binary: $(which urbit)"
 fi
