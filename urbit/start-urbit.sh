@@ -12,7 +12,7 @@ DEVICE_ARCH=$(uname -m)
 if [[ $DEVICE_ARCH == "aarch64" ]]; then
     echo "Urbit binary:  $(which urbit)"
 elif [[ $DEVICE_ARCH == "x86_64" ]]; then
-  export PATH="$PATH:/urbit/binary/urbit"
+  export PATH="$PATH:/urbit/binary"
   echo "Urbit binary: $(which urbit)"
 fi
 
