@@ -5,25 +5,30 @@ volumes:
   netdatacache:
   netdatalib:
   minio:
-  nginx:
+  caddy-data:
+  caddy-config:
+
 services:
-  nginx:
-    build: ./nginx
+  caddy:
+    build: ./caddy
     restart: 'unless-stopped'
     ports:
      - "80:80"
-     - "443:443"
+     - "2019:2019"
     depends_on: ["minio-s3", "netdata", "urbit"]
-  # The following command will start the nginx container and let it idle. That way,
-  # we can ssh into the container and shange the nginx configuration files.
-  # command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - caddy-config:/config
+      - caddy-data:/data
   minio-s3:
     build: ./minio
     restart: 'unless-stopped'
-    volumes: 
+    volumes:
       - minio:/data
- # Urbit will automatically bind port 80. We bind the container's port 80 to the host's port 8080. 
- # That way, we run nginx reverse-proxy and urbit in parallel.  
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+# Urbit will automatically bind port 80. We bind the container's port 80 to the host's port 8080.
+ # That way, we run nginx reverse-proxy and urbit in parallel.
   urbit:
     build: ./urbit
     privileged: false
@@ -34,9 +39,8 @@ services:
     ports:
       - "34343:34343/udp"
       - "8080:80"
-    depends_on: ["minio-s3"]
     labels:
-      io.balena.features.supervisor-api: 1
+      - "io.balena.features.supervisor-api=1"
   netdata:
     build: ./netdata
     privileged: true
@@ -44,11 +48,13 @@ services:
       - SYS_PTRACE
     security_opt:
       - apparmor:unconfined
+    ports:
+      - "19999:19999"
     labels:
-      io.balena.features.balena-socket: 1
-      io.balena.features.procfs: 1
-      io.balena.features.supervisor-api: 1
-      io.balena.features.sysfs: 1
+      - "io.balena.features.balena-socket=1"
+      - "io.balena.features.procfs=1"
+      - "io.balena.features.supervisor-api=1"
+      - "io.balena.features.sysfs=1"
     volumes:
       - netdatalib:/var/lib/netdata
       - netdatacache:/var/cache/netdata
