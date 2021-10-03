@@ -1,0 +1,27 @@
+:80 {
+  log {
+    output stdout
+    level INFO
+  }
+  rewrite /netdata /netdata/
+  rewrite /minio /minio/
+  rewrite /urbit /urbit/
+  rewrite /minio-api /minio-api/
+
+  handle_path /admin/* {
+    reverse_proxy localhost:2019
+  }
+  handle_path /netdata/* {
+    reverse_proxy netdata:{$NETDATA_PORT:19999}
+    }
+  handle_path /minio-api/* {
+    reverse_proxy minio-s3:{$MINIO_API_PORT:9000}
+ }
+  handle_path /minio/* {
+    reverse_proxy minio-s3:{$MINIO_DASHBOARD_PORT:9001}
+  }
+
+  handle_path /urbit/* {
+    reverse_proxy urbit:{$URBIT_DASHBOARD_PORT:80}
+  }
+}
