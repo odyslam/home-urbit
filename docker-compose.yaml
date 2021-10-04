@@ -18,6 +18,7 @@ services:
     depends_on: ["minio-s3", "netdata", "urbit"]
     environment:
       - SHIP_NAME=danbex
+      - DOMAIN=eth.link
     volumes:
       - caddy-config:/config
       - caddy-data:/data
