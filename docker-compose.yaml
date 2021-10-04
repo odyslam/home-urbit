@@ -16,6 +16,8 @@ services:
      - "80:80"
      - "2019:2019"
     depends_on: ["minio-s3", "netdata", "urbit"]
+    environment:
+      - SHIP_NAME=danbex
     volumes:
       - caddy-config:/config
       - caddy-data:/data
