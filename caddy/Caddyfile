@@ -1,17 +1,17 @@
-  {$PROTOCOL}://ship.{$SHIP_NAME}.{$DOMAIN} {
+  {$PROTOCOL}://ship.{$DOMAIN} {
     reverse_proxy urbit:{$URBIT_PORT:80}
   }
 
-  {$PROTOCOL}://s3.{$SHIP_NAME}.{$DOMAIN} {
+  {$PROTOCOL}://s3.{$DOMAIN} {
     reverse_proxy minio-s3:{$MINIO_DASHBOARD_PORT:9001} {
       header_up X-Forwarded-Proto {scheme}
       header_up X-Forwarded-Host {host}
       header_up Host {host}
     }
   }
-  {$PROTOCOL}://s3-api.{$SHIP_NAME}.{$DOMAIN} {
+  {$PROTOCOL}://s3-api.{$DOMAIN} {
     reverse_proxy minio-s3:{$MINIO_API_PORT:9000}
   }
-  {$PROTOCOL}://monitor.{$SHIP_NAME}.{$DOMAIN} {
+  {$PROTOCOL}://monitor.{$DOMAIN} {
     reverse_proxy netdata:{$NETDATA_PORT:19999}
   }
