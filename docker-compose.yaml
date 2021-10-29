@@ -18,8 +18,7 @@ services:
      - "443:443"
     depends_on: ["minio-s3", "netdata", "urbit"]
     environment:
-      - SHIP_NAME=homeurbit
-      - DOMAIN=local
+      - DOMAIN=homeurbit.local
       - PROTOCOL=http
     volumes:
       - caddy-config:/config
