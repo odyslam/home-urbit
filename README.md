@@ -17,7 +17,7 @@ If you want to chat about this:
 - Join ~middev/the-forge and susbscribe to the project's channel
 - Join our [telegram group](https://t.me/homeurbit)
 
-## Project Status
+## Project Status & Urbit Grant
 
 The project is under heavy development, as we move away from an MVP and towards an aplpha version of the software.  You can follow the progress of the project via the `projects` tab in this GitHub repository.
 
@@ -27,7 +27,7 @@ The project is under heavy development, as we move away from an MVP and towards 
 - Using the public device URL offered by balena is a stop-gap measure. Although the reverse-proxy will function as expected for most of the functionality, it's still not possible to use `minio` with `urbit`.
 - balena public device URL is very slow, due to being served from US servers, even if the request and device lives in the EU.
 - `urbit` continues to illustrate an abnormal lag, either due to the reverse proxy or to the SSD. The tested setup uses a RPI4 with a USB3 Samsung T5 external SSD.
-- Raspberry Pi doesn't play out of the box with SSD. In order to boot from SSD, please follow the instructions [here](https://forums.balena.io/t/how-to-boot-balenaos-on-an-ssd-why-it-matters-and-how-it-works/341836).
+- Raspberry Pi doesn't play out of the box with SSD. In order to boot from SSD, please follow the instructions [here](https://forums.balena.io/t/how-to-boot-balenaos-on-an-sSD-why-it-matters-and-how-it-works/341836).
 
 ## Deploy with balena
 
@@ -48,17 +48,17 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 ![](/assets/deploy2.png)
 
-3. To add a device to the application, download the OS image and [flash](https://www.balena.io/etcher/) it to an sd card.
+3. To add a device to the application, download the OS image and [flash](https://www.balena.io/etcher/) it to an SD card.
 
 ![](/assets/deploy3.png)
 
-4. Insert the sd card to the Rasspberry pi 4, connect it to power + Internet. Wait to download your application.
+4. Insert the SD card to the Rasspberry pi 4, connect it to power + Internet. Wait to download your application.
 
 5. Visit the Cloud Dashboard to see that everything works as expected
 
 ![image](https://user-images.githubusercontent.com/13405632/121319220-aafa6e80-c914-11eb-803d-732134d693bd.png)
 
-6. Click on the web terminal, select `urbit` and open a terminal session. Run script `/usr/sbin/get-urbit-code.sh`. This script will give you the code for your Urbit.
+6. Click on the web terminal, select `urbit` and open a terminal session. Execute `/usr/sbin/get-urbit-code.sh`. This script will give you the code for your Urbit.
 
 7. Visit the following address to access `~Urbit`: `ship.<device_public_url>`. Read more about [balena Public Device URLs](https://www.balena.io/docs/learn/develop/runtime/#public-device-urls).
 
@@ -78,12 +78,12 @@ Balena builds the containers in a remote build server and send the binaries to o
 
 The alternative is to deploy our application with the default settings and manually copy over our keys inside the container.
 
-Define the a [device service environment variable](https://www.balena.io/docs/learn/manage/serv-vars/#device-environment-and-service-variables) , with the following name and value: `TRANSFER_KEY`:`1`. The Urbit container will start, but it will **not** start Urbit. Then you can ssh into the container (either using `balena ssh` or the web terminal) and manually copy over your key into the directory `urbit/keys`. After you do, remove the environment variable we just added. The container will restart and will pick up your key.
+Define a [device service environment variable](https://www.balena.io/docs/learn/manage/serv-vars/#device-environment-and-service-variables) , with the following name and value: `TRANSFER_KEY`:`1`. The `urbit` container will start, but it will **not** start Urbit. Then you can ssh into the container (either using `balena ssh` or the web terminal) and manually copy over your key into the directory `urbit/keys`. After you do, remove the environment variable we just added. The container will restart and will pick up your key.
 
 ## Getting Started without balena
 
 1. Download an OS system (e.g [Raspberry Pi OS](https://www.raspberrypi.org/software/)). **Make sure it's 64-bit**.
-2. Flash the image into an sd card.
+2. Flash the image into an SD card.
 3. Get terminal access to the machine (e.g using ssh) and [install docker](https://docs.docker.com/engine/install/debian/).
 4. Install `git` , run `sudo apt-get install git`
 5. Download this repository, run `git clone https://github.com/odyslam/home-urbit`
@@ -114,7 +114,7 @@ Define the a [device service environment variable](https://www.balena.io/docs/le
 
 To read more about claiming the Netdata Agent on Netdata Cloud, visit [Netdata Learn](https://learn.netdata.cloud/docs/agent/claim#claim-an-agent-running-in-docker).
 
-### Minio
+### Caddy
 
 - `$DOMAIN`: The user for Nginx authentication. Default: home-urbit
 - `$PROTOCOL`: What protocol is used to access Home-Urbit. Default is `http`.
@@ -139,10 +139,9 @@ These helper scripts are available inside the `urbit` container. To run them, `s
 
 ## Tips
 
-- You can access your ~Home-Urbit, from anywhere using [balena Public Device URLs](https://www.balena.io/docs/learn/develop/runtime/#public-device-urls).
 - You can ssh into your device via balena webterminal, balena ssh, and regular ssh. Read more on the [docs](https://www.balena.io/docs/learn/manage/ssh-access/).
-- You can tunnel any connection from your local computer to any port on the device, using [balena tunnel](https://www.balena.io/docs/reference/balena-cli/#tunnel-deviceorapplication). This means that you can tunnel port `80` of the device to `localhost:80` and connect to Urbit Landscape from anywhere. (Also possible via using balena Public Device URLs).
-- With docker, we can't automatically set the hostname of the device. Thus, you will need to access it via the IP and not `homeurbit.local`. If you want to [change](https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/) the hostname of your Raspberry Pi. You will be able to access the device via `<hostname>.local`.
+- You can tunnel any connection from your local computer to any port on the device, using [balena tunnel](https://www.balena.io/docs/reference/balena-cli/#tunnel-deviceorapplication).
+- With docker, we can't automatically set the hostname of the device. Thus, you will need to access it via the IP and not `homeurbit.local`. If you want to [change](https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/) the hostname of your Raspberry Pi.
 
 ## License
 
