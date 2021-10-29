@@ -47,5 +47,8 @@ chown -R netdata:netdata /var/lib/netdata
 chown -R netdata:root /var/lib/netdata/cloud.d
 chmod -R 770 /var/lib/netdata/cloud.d/
 
-exec /usr/sbin/netdata -u "${DOCKER_USR}" -D -s /host -p "${NETDATA_PORT}" -W set web "web files group" root -W set web "web files owner" root "$@"
+echo "Starting Netdata with silent output (stdout)"
+echo "Netdata will only output errors (stderr)"
+echo "~Happy Monitoring"
+exec /usr/sbin/netdata -u "${DOCKER_USR}" -D -s /host -p "${NETDATA_PORT}" -W set web "web files group" root -W set web "web files owner" root "$@" > /dev/null 2>&1
 

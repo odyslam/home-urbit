@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 DEVICE_ARCH=$(uname -m)
 if [[ $DEVICE_ARCH == "aarch64" ]]; then
   curl https://s3.us-east-2.amazonaws.com/urbit-on-arm/urbit-on-arm_public.gpg | apt-key add -
