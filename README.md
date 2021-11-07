@@ -23,11 +23,9 @@ The project is under heavy development, as we move away from an MVP and towards 
 
 ## Known issues
 
-- Reverse proxy was changed from `path-based` to `subdomain-based`. This means that in order to visit urbit, we go to `ship.<domain_name>` and not `<domain_name>/urbit`. This change was necessary as both `urbit` and `minio` expect to live in the root of the path `<domain_name>/`.
-- Using the public device URL offered by balena is a stop-gap measure. Although the reverse-proxy will function as expected for most of the functionality, it's still not possible to use `minio` with `urbit`.
-- balena public device URL is very slow, due to being served from US servers, even if the request and device lives in the EU.
-- `urbit` continues to illustrate an abnormal lag, either due to the reverse proxy or to the SSD. The tested setup uses a RPI4 with a USB3 Samsung T5 external SSD.
-- Raspberry Pi doesn't play out of the box with SSD. In order to boot from SSD, please follow the instructions [here](https://forums.balena.io/t/how-to-boot-balenaos-on-an-sSD-why-it-matters-and-how-it-works/341836).
+- "Public Device URL" offered by balena has a couple of issues. Although we don't have to setup our own DNS, it adds considerable lag to the experience. This is because it adds an extra proxy to the request, as we go through balena's servers. Moreover, either due to incorrect proxying or increased lag, MINIO can't be added to Urbit. As we move forward, the setup will automatically use a proper DNS solution.
+- `urbit` is very demanding when it comes to disk speed. **It is advised to use this on a board with an SSD through a SATA or PCI connection**. Aka, a Raspberry pi with an external USB-3 SSD will propably generate lag.
+- If you use Raspberry Pi, it doesn't play out of the box with SSD. In order to boot from SSD, please follow the instructions [here](https://forums.balena.io/t/how-to-boot-balenaos-on-an-sSD-why-it-matters-and-how-it-works/341836).
 
 ## Deploy with balena
 
@@ -64,28 +62,22 @@ The same setup will work flawlessly if you install another OS into the raspberry
 
 ## Getting Started with a planet/star/galaxy keyfile
 
-1. Run `git clone https://github.com/odyslam/home-urbit` on your computer.
-2. Move the `<private_key_name>.key` file inside the `urbit/keys/` directory of the repo you just download. So `~/home-urbit/urbit/keys/<private_key_name>.key`
-3. Create a [balena-cloud account](https://dashboard.balena-cloud.com/apps), then create an application for device type ("Raspberry pi 4"). Let's name it `home-urbit`.
-4. Download [balenacli](https://github.com/balena-io/balena-cli/blob/master/INSTALL.md), install it and [sign into](https://www.balena.io/docs/reference/balena-cli/) your account.
-5. `cd` into the repo directory `home-urbit` and run `balena push home-urbit`.
+1. Add the [device service environment variable](https://www.balena.io/docs/learn/manage/serv-vars/#device-environment-and-service-variables) `KEY_TRANSFER` with a value of `1` to the service `urbit`. This will cause the `urbit` container to restart without starting the `urbit` binary. It will idle.
+2. Open the web-terminal in `urbit` container
+3. Cd into `keys` directory: `cd /urbit/keys`
+4. Open a text editor for a file named after your planet: `nano sipsen-pilser.key`
+5. Copy or type your key into the text edit
+6. Close the text editor
+7. Go back to the service variables and remove the `KEY_TRANSFER` variable (or change it's value to 0).
+8. The container will restart, read the key and boot that planet/star/galaxy.
 
-The reason we can't follow the "Deploy with balena" button flow is that we need to add our key into the application files.
-
-### ALTERNATIVE: Manually add the keyfile inside the urbit container
-
-Balena builds the containers in a remote build server and send the binaries to our device. It means that whatever we add in the docker-compose application (e.g our keys), will live for a brief moment in balena's build servers, something which is not ideal from a security perspective.
-
-The alternative is to deploy our application with the default settings and manually copy over our keys inside the container.
-
-Define a [device service environment variable](https://www.balena.io/docs/learn/manage/serv-vars/#device-environment-and-service-variables) , with the following name and value: `TRANSFER_KEY`:`1`. The `urbit` container will start, but it will **not** start Urbit. Then you can ssh into the container (either using `balena ssh` or the web terminal) and manually copy over your key into the directory `urbit/keys`. After you do, remove the environment variable we just added. The container will restart and will pick up your key.
+Moreover, if `urbit` has already booted a commet (default behaviour), then you have to add another environment variable called: `PIER_NAME`, equal to the name of your planet (e.g `sipsen-pilser`). This will tell Urbit what pier to boot from, since now there are 2 piers (the new planet and the original commet).
 
 ## Getting Started without balena
 
 1. Download an OS system (e.g [Raspberry Pi OS](https://www.raspberrypi.org/software/)). **Make sure it's 64-bit**.
 2. Flash the image into an SD card.
 3. Get terminal access to the machine (e.g using ssh) and [install docker](https://docs.docker.com/engine/install/debian/).
-4. Install `git` , run `sudo apt-get install git`
 5. Download this repository, run `git clone https://github.com/odyslam/home-urbit`
 6. `cd` into the repository
 7. run `sudo docker-compose up`
@@ -116,18 +108,27 @@ To read more about claiming the Netdata Agent on Netdata Cloud, visit [Netdata L
 
 ### Caddy
 
-- `$DOMAIN`: The user for Nginx authentication. Default: home-urbit
+- `$DOMAIN`: The default domain name for the device. Default is `<balena_device_uuid>.balena-devices.com`.
 - `$PROTOCOL`: What protocol is used to access Home-Urbit. Default is `http`.
 
 ### Minio-s3
 
-- `$MINIO_ROOT_USER`: The user for minio authnetication. Default: home-urbit
-- `$MINIO_ROOT_PASSWORD`: The password for minio authnetication. Default: home-urbit
+- `$MINIO_ROOT_USER`: The user for minio authnetication. Default: `home-urbit`
+- `$MINIO_ROOT_PASSWORD`: The password for minio authnetication. Default: `home-urbit`
 
 ### Relevant documentation
 
 - How to add environment variables with Docker/Docker-compose: [Docker documentation](https://docs.docker.com/compose/environment-variables/)
 - How to add environment variables with balena: [balena docs](https://www.balena.io/docs/learn/manage/serv-vars/)
+
+## Accessing the services
+
+Caddy acts as a reverse-proxy. It proxies request based on the `subdomain` of the request.
+
+- `s3.<domain>` will proxy to the MINIO's dashboard
+- `s3-api.<domain>` will proxy to the MINIO API
+- `ship.<domain>` will proxy to Urbit's dashboard
+- `monitor.<domain>` will proxy to Netdata's dashboard
 
 ## Helper scripts
 
