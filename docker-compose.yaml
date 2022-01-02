@@ -7,20 +7,20 @@ volumes:
   minio:
   caddy-data:
   caddy-config:
-  wireguard-config:
+  config:
 
 services:
-    anchor:
-      build: ./anchor
-      privileged: true
-      volumes:
-        - wireguard-config:/etc/wireguard
-      ports:
-        - 51820:51820/udp
-      sysctls:
-        - net.ipv4.conf.all.src_valid_mark=1
-      labels:
-        - io.balena.features.kernel-modules=1
+  anchor:
+    build: ./anchor
+    privileged: true
+    volumes:
+      - config:/etc/wireguard
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    labels:
+      - io.balena.features.kernel-modules=1
   caddy:
     build: ./caddy
     restart: 'unless-stopped'
@@ -33,7 +33,7 @@ services:
       - DOMAIN=homeurbit.local
       - PROTOCOL=http
     volumes:
-      - caddy-config:/config
+      - config:/config
       - caddy-data:/data
   minio-s3:
     build: ./minio
@@ -43,8 +43,6 @@ services:
     ports:
       - "9000:9000"
       - "9001:9001"
-# Urbit will automatically bind port 80. We bind the container's port 80 to the host's port 8080.
- # That way, we run nginx reverse-proxy and urbit in parallel.
   urbit:
     build: ./urbit
     privileged: false
@@ -52,6 +50,7 @@ services:
     volumes:
       - urbit:/urbit/piers
       - urbit:/urbit/keys
+      - config:/etc
     ports:
       - "34343:34343/udp"
       - "8080:80"
@@ -74,3 +73,4 @@ services:
     volumes:
       - netdatalib:/var/lib/netdata
       - netdatacache:/var/cache/netdata
+      - config:/etc

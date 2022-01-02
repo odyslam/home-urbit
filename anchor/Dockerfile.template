@@ -36,7 +36,8 @@ RUN apk add --no-cache \
     gettext \
     ipcalc \
     openssl-dev \
-    perl
+    perl \
+    neovim
 
 WORKDIR /usr/src/app
 
@@ -62,7 +63,7 @@ RUN patch -d /usr/src/app/wireguard-linux-compat-${WG_LINUX_TAG}/ -p0 < wireguar
 # Set both of these to match your target device to pre-build modules
 # Leave at least one of them unset to postpone module building to app start
 ARG BALENA_DEVICE_TYPE=%%BALENA_MACHINE_NAME%%
-ARG BALENA_HOST_OS_VERSION
+ARG BALENA_HOST_OS_VERSION=2.83.18+rev1
 
 COPY buildmod.sh ./
 RUN chmod +x ./buildmod.sh && ./buildmod.sh
@@ -81,6 +82,8 @@ COPY run.sh ./
 COPY show-peer /usr/bin/
 
 RUN chmod +x run.sh /usr/bin/show-peer
+
+COPY peer_1.conf /etc/wireguard/peer_1.conf
 
 CMD [ "/usr/src/app/run.sh" ]
 

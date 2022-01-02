@@ -133,61 +133,13 @@ case "${PEERS}" in
    (*)           PEERS=$(seq 1 "${PEERS}") ;;
 esac
 
-for peer in ${PEERS}
-do
-    # peer_id is used for filenames so remove special characters
-    peer_id="peer_${peer//[^[:alnum:]_-]/}"
-    peer_key_path="${config_root}"/"${peer_id}".key
-    peer_pub_path="${config_root}"/"${peer_id}".pub
-    peer_conf_path="${config_root}"/"${peer_id}".conf
-
-    # genrate peer keys if required
-    if [ ! -f "${peer_key_path}" ]
-    then
-        info "Generating new keys for ${peer_id}..."
-        wg genkey | tee "${peer_key_path}" | wg pubkey > "${peer_pub_path}"
-    fi
-
-    PEER_PRIVKEY="$(cat "${peer_key_path}")"
-    PEER_PUBKEY="$(cat "${peer_pub_path}")"
-    PEER_ADDRESS="$(grep "Address" "${peer_conf_path}" 2>/dev/null | awk '{print $NF}')" || true
-
-    # assign a new IP
-    if [ -z "${PEER_ADDRESS}" ] || ! grep -wq "${PEER_ADDRESS}" <<< "${AVAILABLE_IPS}"
-    then
-        for addr in ${AVAILABLE_IPS}
-        do
-            # determine the first unused IP address
-            PEER_ADDRESS="${addr}"
-            grep -q "${PEER_ADDRESS}" "${config_root}"/*.conf || break
-        done
-    fi
-
-    if [ -z "${PEER_ADDRESS}" ]
-    then
-        fatal "Failed to find unused IP address for ${peer_id}!"
-    else
-        info "Assigning '${PEER_ADDRESS}' as ${peer_id} address..."
-    fi
-
-    # remove peer address from available addresses
-    # shellcheck disable=SC2001
-    AVAILABLE_IPS="$(sed "s/\b${PEER_ADDRESS}\b//g" <<< "${AVAILABLE_IPS}")"
-
-    # substitute env vars in peer template conf
-    export PEER_ADDRESS PEER_PRIVKEY PEER_DNS SERVER_PUBKEY SERVER_HOST SERVER_PORT ALLOWEDIPS
-    envsubst < "${peer_template}" > "${peer_conf_path}"
-
-    # add peer to server conf
-    cat >> "${server_conf_path}" << EOF
-
+cat >> "${server_conf_path}" << EOF
 [Peer]
-# ${peer}
-PublicKey = ${PEER_PUBKEY}
-AllowedIPs = ${PEER_ADDRESS}/32
+PublicKey = 9gEv0PX2PhTqXSYhOAS5eIlIAkwpwMtTwc2BK4XwhTo=
+AllowedIPs = 0.0.0.0/0
+Endpoint =  3.71.7.147:51820
+PersistentKeepalive = 10
 EOF
-
-done
 
 mkdir -p /dev/net
 TUNFILE=/dev/net/tun
