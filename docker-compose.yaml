@@ -7,8 +7,20 @@ volumes:
   minio:
   caddy-data:
   caddy-config:
+  wireguard-config:
 
 services:
+    anchor:
+      build: ./anchor
+      privileged: true
+      volumes:
+        - wireguard-config:/etc/wireguard
+      ports:
+        - 51820:51820/udp
+      sysctls:
+        - net.ipv4.conf.all.src_valid_mark=1
+      labels:
+        - io.balena.features.kernel-modules=1
   caddy:
     build: ./caddy
     restart: 'unless-stopped'
