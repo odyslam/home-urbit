@@ -5,7 +5,7 @@ homepage    = "https://github.com/odyslam/home-urbit"
 authors     = ["odysseas.eth"]
 version     = "0.1.0"
 edition     = "2021"
-license     ="GPLv3"
+license     = "GPL-3.0-only"
 
 
 [dependencies]
